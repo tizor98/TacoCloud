@@ -1,3 +1,15 @@
+* {
+    background-color: #EDF7F6;
+    text-align: center;
+}
+
 .validationError {
-    color: red
+    color: red;
+}
+
+.logo {
+    width: 400px;
+    heigth: auto;
+    display: block;
+    margin: auto;
 }

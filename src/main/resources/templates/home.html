@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Taco Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 <body>
     <h1>Welcome to ....</h1>
-    <img th:src="@{/img/TacoCloud.png}" alt="Logo-Taco-Cloud" />
+    <img th:src="@{/img/TacoCloud.png}" alt="Logo-Taco-Cloud" class="logo" />
+    <a th:href="@{/design}">Put a new order</a>
 </body>
 </html>
