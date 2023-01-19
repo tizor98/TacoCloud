@@ -1,7 +1,9 @@
 package com.local.tacocloud.web.controllers;
 
+import com.local.tacocloud.database.repository.OrderRepository;
 import com.local.tacocloud.domain.TacoOrder;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,9 @@ import javax.validation.Valid;
 @SessionAttributes("tacoOrder") // Mantain tacoOrder along the whole session
 public class OrderController {
 
+   @Autowired
+   OrderRepository orderRepository;
+
    @GetMapping("/current")
    public String showCurrentOrder() {
       return "orderForm";
@@ -30,8 +35,9 @@ public class OrderController {
          return "orderForm";
       }
 
-      log.info("Order submitted: {}", order);
+      orderRepository.save(order);
       sessionStatus.setComplete(); // Close tacoOrder
+      log.info("Order submitted: {}", order);
 
       return "redirect:/";
    }
