@@ -27,7 +27,7 @@ public class DesignTacoController {
 
    @ModelAttribute
    public void addIngredientsToModel (Model model) {
-      List<Ingredient> ingredients = ingredientRepository.findAll();
+      List<Ingredient> ingredients = (List<Ingredient>) ingredientRepository.findAll();
 
       Type[] types = Type.values();
 
