@@ -62,7 +62,6 @@ public class DesignTacoController {
    public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute TacoOrder tacoOrder) {
 
       if(errors.hasErrors()) {
-         System.out.println(errors);
          return "design";
       }
 
