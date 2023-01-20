@@ -8,7 +8,7 @@ create table if not exists Taco_Order (
   cc_number varchar(16) not null,
   cc_expiration varchar(5) not null,
   cc_cvv varchar(3) not null,
-  createdAt timestamp not null,
+  created_At timestamp not null,
   primary key(id)
 );
 
@@ -17,7 +17,7 @@ create table if not exists Taco (
   name varchar(50) not null,
   taco_order bigint not null,
   taco_order_key bigint not null,
-  createdAt timestamp not null,
+  created_At timestamp not null,
   primary key(id)
 );
 
@@ -38,5 +38,7 @@ create table if not exists Ingredient_Ref (
 
 alter table Taco
     add foreign key (taco_order) references Taco_Order(id);
+alter table Ingredient_Ref
+    add foreign key (taco) references Taco(id);
 alter table Ingredient_Ref
     add foreign key (ingredient) references Ingredient(id);
