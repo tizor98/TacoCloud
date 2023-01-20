@@ -28,15 +28,5 @@ create table if not exists Ingredient (
   primary key(id)
 );
 
-create table if not exists Ingredient_Ref (
-  id identity,
-  ingredient varchar(4) not null,
-  taco bigint not null,
-  taco_key bigint not null,
-  primary key(id)
-);
-
 alter table Taco
     add foreign key (taco_order) references Taco_Order(id);
-alter table Ingredient_Ref
-    add foreign key (ingredient) references Ingredient(id);
