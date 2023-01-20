@@ -2,6 +2,9 @@ package com.local.tacocloud.domain;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
@@ -24,6 +27,7 @@ public class TacoOrder implements Serializable {
 
    private Date createdAt = new Date();
 
+   @Column("DELIVERY_NAME") // This annotation is optional. Only leave here for illustrative purpose
    @NotBlank(message = "Delivery name is required")
    private String deliveryName;
 
