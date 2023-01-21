@@ -24,6 +24,7 @@ public class TacoOrder implements Serializable {
 
    private Date createdAt = new Date();
 
+   @Column("DELIVERY_NAME") // This annotation is optional. Only leave here for illustrative purpose
    @NotBlank(message = "Delivery name is required")
    private String deliveryName;
 
