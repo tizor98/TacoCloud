@@ -34,6 +34,8 @@ public class DesignTacoController {
       for (Type type : types) {
          model.addAttribute(type.toString().toLowerCase(), filterByType(ingredients, type));
       }
+      log.info("Model info: {}", model);
+
    }
 
    @ModelAttribute(name = "tacoOrder")

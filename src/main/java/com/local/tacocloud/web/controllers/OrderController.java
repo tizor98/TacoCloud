@@ -35,8 +35,11 @@ public class OrderController {
          return "orderForm";
       }
 
+      log.info("Order received: {}", order);
+
       orderRepository.save(order);
       sessionStatus.setComplete(); // Close tacoOrder
+
       log.info("Order submitted: {}", order);
 
       return "redirect:/";

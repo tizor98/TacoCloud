@@ -1,16 +1,14 @@
 package com.local.tacocloud.domain;
 
 import lombok.*;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Entity
+@Document(collection = "ingredients")
 // @RequiredArgsConstructor
-// Can be useful when JPA uses the NoArgsConstructor the @Data annotation removes the ArgsConstructor unless this label is here
+// Can be useful when data maneger uses the NoArgsConstructor Lombok can remove the ArgsConstructor unless this label is here
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class Ingredient {
 
    @Id
