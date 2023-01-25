@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <title>Taco Cloud</title>
+  <title>Taco Cloud - Order</title>
   <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 <body>
@@ -57,6 +57,10 @@
     <br/>
     <input type="submit" value="Submit Order"/>
 
+  </form>
+
+  <form method="POST" th:action="@{/logout}">
+    <input type="submit" value="Logout"/>
   </form>
 
 </body>
