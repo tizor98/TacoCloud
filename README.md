@@ -16,5 +16,6 @@ and configuration files.
 - Thymeleaf as the view engine
 - MongoDB v4.0.28
 - Flapdoodle to create an embedded Mongo database
+- Lombok to autogenerate getters, setters, toString, etc
 
 ### Created by Alberto Ortiz
