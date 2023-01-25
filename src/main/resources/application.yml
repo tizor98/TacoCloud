@@ -7,6 +7,9 @@ spring:
   mongodb:
     embedded:
       version: 4.0.28 # 4.0.21 also works fine, 5 and above didn't work
+
+
+
 # The datasource config is for H2 database
 #  datasource:
 #    generate-unique-name: false
