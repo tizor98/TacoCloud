@@ -15,8 +15,16 @@ and configuration files.
 - Spring Boot v2.7.7
 - Thymeleaf as the view engine
 - MongoDB v4.0.28
-- Oauth2-client for third-party authentication
 - Flapdoodle to create an embedded Mongo database
 - Lombok to autogenerate getters, setters, toString, etc
+
+### Environment variables
+
+You need to set a few environment variables for the app to function correctly
+- SSL_KEY_PASSWORD to set the password for SSL key to allow https request.
+You can generate the password and the `mykeys.jks` file reference in `application.yml`
+with the `keytool` command in the terminal
+- SPRING_PROFILES_ACTIVE to set the environment. Options are: `dev`
+or `prod`
 
 ### Created by Alberto Ortiz

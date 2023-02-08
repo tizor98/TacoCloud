@@ -1,0 +1,22 @@
+spring:
+   data:
+      mongodb:
+         host: 127.0.0.1
+         port: 27017
+         database: tacocloud
+   mongodb:
+      embedded:
+         version: 4.0.28 # 4.0.21 also works fine, 5 and above didn't work
+logging:
+   level: # indicates the type of log info that is shown
+      root: info
+      org.springframework.security: debug
+
+
+# The datasource config is for H2 database
+#  datasource:
+#    generate-unique-name: false
+#    name: tacocloud
+# The jpa config is to show in console the sql statements executed by the program
+#  jpa:
+#    show-sql: true

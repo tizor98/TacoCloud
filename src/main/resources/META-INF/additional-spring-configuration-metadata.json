@@ -1,0 +1,7 @@
+{
+  "properties": [{
+    "name": "taco.order.page-size",
+    "type": "java.lang.Integer",
+    "description": "Max page size of number of historical orders for an specific client"
+  }]
+}
