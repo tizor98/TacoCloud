@@ -1,19 +1,11 @@
-spring:
-  data:
-    mongodb:
-      host: 127.0.0.1
-      port: 27017
-      database: tacocloud
-  mongodb:
-    embedded:
-      version: 4.0.28 # 4.0.21 also works fine, 5 and above didn't work
-
-
-
-# The datasource config is for H2 database
-#  datasource:
-#    generate-unique-name: false
-#    name: tacocloud
-# The jpa config is to show in console the sql statements executed by the program
-#  jpa:
-#    show-sql: true
+taco:
+  order:
+    pageSize: 15 # Spring allows for variations in property names, so it does not matter if we use page-size, or pageSize
+server:
+  port: 8443
+  ssl: # Generate using keytool in the terminal
+    key-store: mykeys.jks
+    key-store-password: ${SSL_KEY_PASSWORD}
+    key-password: ${SSL_KEY_PASSWORD}
+logging:
+  file.name: logs/TacoCloud.log

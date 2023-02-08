@@ -6,7 +6,10 @@ import com.local.tacocloud.domain.Ingredient.Type;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
+// @Profile also works for beans methods
+@Profile("dev") // For more than one profile, write "dev", "cloud", etc., or "!prod" to indicate every profile but prod
 @Configuration
 public class InitialDataLoad {
 
