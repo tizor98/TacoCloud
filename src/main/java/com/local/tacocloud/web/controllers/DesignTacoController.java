@@ -1,20 +1,21 @@
 package com.local.tacocloud.web.controllers;
 
-import com.local.tacocloud.database.repository.IngredientRepository;
 import com.local.tacocloud.domain.Ingredient;
 import com.local.tacocloud.domain.Ingredient.Type;
 import com.local.tacocloud.domain.Taco;
 import com.local.tacocloud.domain.TacoOrder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Controller
@@ -24,11 +25,15 @@ import java.util.stream.Collectors;
 public class DesignTacoController {
 
    @Autowired
-   private IngredientRepository ingredientRepository;
+   private RestTemplate res;
 
    @ModelAttribute
    public void addIngredientsToModel (Model model) {
-      List<Ingredient> ingredients = (List<Ingredient>) ingredientRepository.findAll();
+
+      ResponseEntity<Ingredient[]> responseEnt = res.getForEntity("https://localhost:8443/api/ingredients", Ingredient[].class);
+      log.info("Request status: {}", responseEnt.getStatusCode());
+
+      List<Ingredient> ingredients = List.of(Objects.requireNonNull(responseEnt.getBody()));
 
       Type[] types = Type.values();
 
