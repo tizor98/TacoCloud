@@ -1,7 +1,5 @@
 package com.local.tacocloud.web.controllers;
 
-import com.local.tacocloud.database.repository.OrderRepository;
-import com.local.tacocloud.database.repository.UserRepository;
 import com.local.tacocloud.domain.TacoOrder;
 import com.local.tacocloud.domain.User;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
 
@@ -21,10 +20,7 @@ import javax.validation.Valid;
 public class OrderController {
 
    @Autowired
-   OrderRepository orderRepository;
-
-   @Autowired
-   UserRepository userRepository;
+   private RestTemplate res;
 
    @GetMapping("/current")
    public String showCurrentOrder() {
@@ -38,14 +34,15 @@ public class OrderController {
          return "orderForm";
       }
 
-      order.setUser(user);
+      order.setUserId(user.getId());
 
       log.info("Order received: {}", order);
 
-      orderRepository.save(order);
+      // It functions whether we use /api/orders (generate in controllers of folder web.api) or /data-api/tacoOrders (by spring data rest)
+      TacoOrder taco = res.postForObject("https://localhost:8443/data-api/tacoOrders", order, TacoOrder.class);
       sessionStatus.setComplete(); // Close tacoOrder
 
-      log.info("Order submitted: {}", order);
+      log.info("Order submitted: {}", taco);
 
       return "redirect:/";
    }

@@ -50,7 +50,7 @@ public class TacoOrder implements Serializable {
 
    private List<Taco> tacos = new ArrayList<>();
 
-   private User user;
+   private String userId;
 
    public void addTaco(Taco taco) {
       this.tacos.add(taco);

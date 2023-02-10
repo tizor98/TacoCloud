@@ -9,3 +9,7 @@ server:
     key-password: ${SSL_KEY_PASSWORD}
 logging:
   file.name: logs/TacoCloud.log
+spring:
+  data:
+    rest:
+      base-path: /data-api

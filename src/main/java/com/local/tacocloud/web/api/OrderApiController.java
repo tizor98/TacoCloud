@@ -16,6 +16,11 @@ public class OrderApiController {
    @Autowired
    public OrderRepository orderRepo;
 
+   @PostMapping(consumes = "application/json")
+   public TacoOrder postOrder(@RequestBody TacoOrder order) {
+      return orderRepo.save(order);
+   }
+
    @PutMapping(path = "/{orderId}", consumes = "application/json")
    public TacoOrder putOrder(@PathVariable("orderId") String orderId, @RequestBody TacoOrder order) {
       order.setId(orderId);

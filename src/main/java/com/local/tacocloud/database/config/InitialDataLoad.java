@@ -2,13 +2,16 @@ package com.local.tacocloud.database.config;
 
 import com.local.tacocloud.database.repository.IngredientRepository;
 import com.local.tacocloud.database.repository.TacoRepository;
+import com.local.tacocloud.database.repository.UserRepository;
 import com.local.tacocloud.domain.Ingredient;
 import com.local.tacocloud.domain.Ingredient.Type;
 import com.local.tacocloud.domain.Taco;
+import com.local.tacocloud.domain.User;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Arrays;
 
@@ -18,7 +21,10 @@ import java.util.Arrays;
 public class InitialDataLoad {
 
    @Bean
-   public ApplicationRunner loadData(IngredientRepository ingredientRepo, TacoRepository tacoRepo) {
+   public ApplicationRunner loadData(IngredientRepository ingredientRepo,
+                                     TacoRepository tacoRepo,
+                                     UserRepository userRepo,
+                                     PasswordEncoder encoder) {
       return args -> {
          Ingredient flourTortilla = new Ingredient("FLTO", "Flour Tortilla", Type.WRAP);
          Ingredient cornTortilla = new Ingredient("COTO", "Corn Tortilla", Type.WRAP);
@@ -56,6 +62,15 @@ public class InitialDataLoad {
          taco3.setName("Veg-Out");
          taco3.setIngredients(Arrays.asList(flourTortilla, cornTortilla, tomatoes, lettuce, salsa));
          tacoRepo.save(taco3);
+
+         userRepo.save(new User("tizor",
+            encoder.encode("123456789"),
+            "Alberto Ortiz",
+            "Calle falsa 123",
+            "Bogotá",
+            "Bogotá",
+            "110832",
+            "3000000000"));
       };
    }
 

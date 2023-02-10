@@ -44,9 +44,9 @@ public class SecurityConfig {
             .logout()
                .logoutSuccessUrl("/")
          .and()
+         .cors().and().csrf().disable()
          .build();
    }
-
 
 
 /* This method would allow to define in memory users from the start of the app

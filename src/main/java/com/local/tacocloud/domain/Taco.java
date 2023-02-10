@@ -3,6 +3,7 @@ package com.local.tacocloud.domain;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Data
 @Document(collection = "tacos")
+@RestResource(rel = "tacos", path = "tacos")
 public class Taco {
 
    @Id
