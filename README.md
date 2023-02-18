@@ -10,13 +10,15 @@ This app was developed using `Java 11`. Folder structure follows the usual Java 
 Therefore, main files are located in `src/main/java/com.local.tacocloud/` for the base code, and `src/main/resources` for static
 and configuration files.
 
-## Dependencies
+### Dependencies
 
-- Spring Boot v2.7.7
-- Thymeleaf as the view engine
-- MongoDB v4.0.28
-- Flapdoodle to create an embedded Mongo database
-- Lombok to autogenerate getters, setters, toString, etc
+| Dependency  | Version or purpose                     |
+|-------------|----------------------------------------|
+| Spring Boot | 2.7.7                                  |
+| Thumeleaf   | View Engine                            |
+| MongoDB     | 4.0.28                                 |
+| Flapdoodle  | To create embedded Mongo db            |
+| Lombok      | To autogenerate getters, setters, etc. |
 
 ### Environment variables
 
@@ -26,5 +28,10 @@ You can generate the password and the `mykeys.jks` file reference in `applicatio
 with the `keytool` command in the terminal
 - SPRING_PROFILES_ACTIVE to set the environment. Options are: `dev`
 or `prod`
+
+### Related repositories
+
+- If you want to use ingredients api (api/ingredients, there is also available other ingredients api at data-api/ingredients) you need to get authorization. For the process you should use
+the [TacoCloud-auth-server](https://github.com/tizor98/TacoCloud-auth-server) repo. There you will find instructions to successfully get authorization in the app using JWT.
 
 ### Created by Alberto Ortiz
