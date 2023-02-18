@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class OrderApiController {
 
    @Autowired
-   public OrderRepository orderRepo;
+   private OrderRepository orderRepo;
 
    @PostMapping(consumes = "application/json")
    public TacoOrder postOrder(@RequestBody TacoOrder order) {
