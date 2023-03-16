@@ -1,9 +1,9 @@
 package com.local.tacocloud.web.controllers;
 
-import com.local.tacocloud.domain.Ingredient;
-import com.local.tacocloud.domain.Ingredient.Type;
-import com.local.tacocloud.domain.Taco;
-import com.local.tacocloud.domain.TacoOrder;
+import com.local.tacocloud.database.entity.Ingredient;
+import com.local.tacocloud.database.entity.Ingredient.Type;
+import com.local.tacocloud.database.entity.Taco;
+import com.local.tacocloud.database.entity.TacoOrder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

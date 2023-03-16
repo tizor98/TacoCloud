@@ -1,6 +1,6 @@
 package com.local.tacocloud.database.repository;
 
-import com.local.tacocloud.domain.TacoOrder;
+import com.local.tacocloud.database.entity.TacoOrder;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Date;

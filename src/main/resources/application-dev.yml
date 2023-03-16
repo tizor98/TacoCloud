@@ -1,4 +1,7 @@
 spring:
+   rabbitmq:
+      username: guest
+      password: guest
    data:
       mongodb:
          host: 127.0.0.1

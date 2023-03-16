@@ -1,4 +1,4 @@
-package com.local.tacocloud.domain;
+package com.local.tacocloud.database.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -7,6 +7,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 @Data
 @Document(collection = "tacos")
 @RestResource(rel = "tacos", path = "tacos")
-public class Taco {
+public class Taco implements Serializable {
 
    @Id
    private String id;

@@ -1,4 +1,4 @@
-package com.local.tacocloud.domain;
+package com.local.tacocloud.database.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

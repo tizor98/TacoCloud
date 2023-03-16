@@ -2,7 +2,7 @@ package com.local.tacocloud.web.controllers;
 
 import com.local.tacocloud.database.repository.UserRepository;
 import com.local.tacocloud.domain.RegistrationForm;
-import com.local.tacocloud.domain.User;
+import com.local.tacocloud.database.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
