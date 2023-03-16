@@ -1,7 +1,7 @@
 package com.local.tacocloud.web.controllers;
 
-import com.local.tacocloud.domain.TacoOrder;
-import com.local.tacocloud.domain.User;
+import com.local.tacocloud.database.entity.TacoOrder;
+import com.local.tacocloud.database.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -39,7 +39,7 @@ public class OrderController {
       log.info("Order received: {}", order);
 
       // It functions whether we use /api/orders (generate in controllers of folder web.api) or /data-api/tacoOrders (by spring data rest)
-      TacoOrder taco = res.postForObject("https://localhost:8443/data-api/tacoOrders", order, TacoOrder.class);
+      TacoOrder taco = res.postForObject("https://localhost:8443/api/orders", order, TacoOrder.class);
       sessionStatus.setComplete(); // Close tacoOrder
 
       log.info("Order submitted: {}", taco);

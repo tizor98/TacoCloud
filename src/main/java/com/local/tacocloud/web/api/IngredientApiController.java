@@ -1,7 +1,7 @@
 package com.local.tacocloud.web.api;
 
 import com.local.tacocloud.database.repository.IngredientRepository;
-import com.local.tacocloud.domain.Ingredient;
+import com.local.tacocloud.database.entity.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

@@ -1,5 +1,6 @@
 package com.local.tacocloud.domain;
 
+import com.local.tacocloud.database.entity.Ingredient;
 import com.local.tacocloud.database.repository.IngredientRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;

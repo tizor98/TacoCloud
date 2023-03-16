@@ -1,7 +1,7 @@
 package com.local.tacocloud.web.security;
 
 import com.local.tacocloud.database.repository.UserRepository;
-import com.local.tacocloud.domain.User;
+import com.local.tacocloud.database.entity.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

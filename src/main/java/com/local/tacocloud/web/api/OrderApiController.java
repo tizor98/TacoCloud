@@ -1,7 +1,8 @@
 package com.local.tacocloud.web.api;
 
 import com.local.tacocloud.database.repository.OrderRepository;
-import com.local.tacocloud.domain.TacoOrder;
+import com.local.tacocloud.database.entity.TacoOrder;
+import com.local.tacocloud.domain.service.OrderMessagingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -13,12 +14,21 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "https://127.0.0.1:8443") // For development purpose
 public class OrderApiController {
 
+   private final OrderRepository orderRepo;
+
+   private final OrderMessagingService message;
+
    @Autowired
-   private OrderRepository orderRepo;
+   OrderApiController(OrderRepository orderRepo, OrderMessagingService message) {
+      this.orderRepo = orderRepo;
+      this.message = message;
+   }
 
    @PostMapping(consumes = "application/json")
    public TacoOrder postOrder(@RequestBody TacoOrder order) {
-      return orderRepo.save(order);
+      TacoOrder sentTaco = orderRepo.save(order);
+      message.sendOrder(sentTaco);
+      return sentTaco;
    }
 
    @PutMapping(path = "/{orderId}", consumes = "application/json")
