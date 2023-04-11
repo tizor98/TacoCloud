@@ -24,8 +24,12 @@ import java.util.stream.Collectors;
 @SessionAttributes("tacoOrder") // Mantain tacoOrder along the whole session
 public class DesignTacoController {
 
+   private final RestTemplate res;
+
    @Autowired
-   private RestTemplate res;
+   public DesignTacoController(RestTemplate res) {
+      this.res = res;
+   }
 
    @ModelAttribute
    public void addIngredientsToModel (Model model) {
@@ -61,8 +65,8 @@ public class DesignTacoController {
 
    private Iterable<Ingredient> filterByType(List<Ingredient> ingredients, Type type) {
       return ingredients
-         .stream().
-         filter( ingredient -> ingredient.getType().equals(type))
+         .stream()
+         .filter( ingredient -> ingredient.getType().equals(type))
          .collect(Collectors.toList());
    }
 

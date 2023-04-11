@@ -17,8 +17,12 @@ import java.util.Optional;
 @CrossOrigin(origins = "https://127.0.0.1:8443") // For development purpose
 public class TacoApiController {
 
+   private final TacoRepository tacoRepo;
+
    @Autowired
-   private TacoRepository tacoRepo;
+   public TacoApiController(TacoRepository tacoRepo) {
+      this.tacoRepo = tacoRepo;
+   }
 
    @GetMapping(params = "recent")
    public ResponseEntity<Iterable<Taco>> recentTacos() {

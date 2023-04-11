@@ -10,8 +10,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class IngredientByIdConverter implements Converter<String, Ingredient> {
 
+   private final IngredientRepository ingredientRepository;
+
    @Autowired
-   private IngredientRepository ingredientRepository;
+   public IngredientByIdConverter(IngredientRepository ingredientRepository) {
+      this.ingredientRepository = ingredientRepository;
+   }
 
    @Override
    public Ingredient convert(String id) {

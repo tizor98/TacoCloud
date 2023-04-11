@@ -13,8 +13,12 @@ import java.util.List;
 @CrossOrigin(origins = "https://127.0.0.1:8443") // For development purpose
 public class IngredientApiController {
 
+   private final IngredientRepository ingredientRepo;
+
    @Autowired
-   private IngredientRepository ingredientRepo;
+   public IngredientApiController(IngredientRepository ingredientRepo) {
+      this.ingredientRepo = ingredientRepo;
+   }
 
    @GetMapping
    public List<Ingredient> ingredientList() {

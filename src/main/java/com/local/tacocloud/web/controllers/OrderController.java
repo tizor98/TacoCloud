@@ -19,8 +19,12 @@ import javax.validation.Valid;
 @SessionAttributes("tacoOrder") // Mantain tacoOrder along the whole session
 public class OrderController {
 
+   private final RestTemplate res;
+
    @Autowired
-   private RestTemplate res;
+   public OrderController(RestTemplate res) {
+      this.res = res;
+   }
 
    @GetMapping("/current")
    public String showCurrentOrder() {
