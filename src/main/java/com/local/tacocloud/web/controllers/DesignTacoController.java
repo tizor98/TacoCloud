@@ -4,6 +4,7 @@ import com.local.tacocloud.database.entity.Ingredient;
 import com.local.tacocloud.database.entity.Ingredient.Type;
 import com.local.tacocloud.database.entity.Taco;
 import com.local.tacocloud.database.entity.TacoOrder;
+import com.local.tacocloud.filesystem.FileWriterGateway;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,9 +27,12 @@ public class DesignTacoController {
 
    private final RestTemplate res;
 
+   private final FileWriterGateway writerGateway;
+
    @Autowired
-   public DesignTacoController(RestTemplate res) {
+   public DesignTacoController(RestTemplate res, FileWriterGateway writerGateway) {
       this.res = res;
+      this.writerGateway = writerGateway;
    }
 
    @ModelAttribute
@@ -78,6 +82,7 @@ public class DesignTacoController {
       }
 
       tacoOrder.addTaco(taco);
+      writerGateway.writeToFile("tacos", taco.toString());
       log.info("Processing taco: {}", taco);
 
       return "redirect:/orders/current";
