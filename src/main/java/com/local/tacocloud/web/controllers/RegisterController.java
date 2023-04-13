@@ -16,11 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j // Create log info
 public class RegisterController {
 
-   @Autowired
-   private UserRepository userRepository;
+   private final UserRepository userRepository;
+
+   private final PasswordEncoder passwordEncoder;
 
    @Autowired
-   private PasswordEncoder passwordEncoder;
+   public RegisterController(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+      this.userRepository = userRepository;
+      this.passwordEncoder = passwordEncoder;
+   }
 
    @GetMapping
    public String registerForm() {

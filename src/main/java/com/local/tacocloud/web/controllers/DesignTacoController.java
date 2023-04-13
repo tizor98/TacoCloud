@@ -4,6 +4,7 @@ import com.local.tacocloud.database.entity.Ingredient;
 import com.local.tacocloud.database.entity.Ingredient.Type;
 import com.local.tacocloud.database.entity.Taco;
 import com.local.tacocloud.database.entity.TacoOrder;
+import com.local.tacocloud.filesystem.FileWriterGateway;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,8 +25,15 @@ import java.util.stream.Collectors;
 @SessionAttributes("tacoOrder") // Mantain tacoOrder along the whole session
 public class DesignTacoController {
 
+   private final RestTemplate res;
+
+   private final FileWriterGateway writerGateway;
+
    @Autowired
-   private RestTemplate res;
+   public DesignTacoController(RestTemplate res, FileWriterGateway writerGateway) {
+      this.res = res;
+      this.writerGateway = writerGateway;
+   }
 
    @ModelAttribute
    public void addIngredientsToModel (Model model) {
@@ -61,8 +69,8 @@ public class DesignTacoController {
 
    private Iterable<Ingredient> filterByType(List<Ingredient> ingredients, Type type) {
       return ingredients
-         .stream().
-         filter( ingredient -> ingredient.getType().equals(type))
+         .stream()
+         .filter( ingredient -> ingredient.getType().equals(type))
          .collect(Collectors.toList());
    }
 
@@ -74,6 +82,7 @@ public class DesignTacoController {
       }
 
       tacoOrder.addTaco(taco);
+      writerGateway.writeToFile("tacos", taco.toString());
       log.info("Processing taco: {}", taco);
 
       return "redirect:/orders/current";

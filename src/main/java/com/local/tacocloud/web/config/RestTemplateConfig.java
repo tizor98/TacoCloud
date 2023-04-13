@@ -17,6 +17,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 
 @Configuration
+// Config for unsecured restTemplate - aka restTemplate making request to HTTPS endpoints without signature verification
 public class RestTemplateConfig {
 
    @Bean
