@@ -63,14 +63,16 @@ public class InitialDataLoad {
          taco3.setIngredients(Arrays.asList(flourTortilla, cornTortilla, tomatoes, lettuce, salsa));
          tacoRepo.save(taco3);
 
-         userRepo.save(new User("tizor",
-            encoder.encode("123456789"),
-            "Alberto Ortiz",
-            "Calle falsa 123",
-            "Bogotá",
-            "Bogotá",
-            "110832",
-            "3000000000"));
+         if(!userRepo.existsUserByUsername("tizor")) {
+            userRepo.save(new User("tizor",
+               encoder.encode("123456789"),
+               "Alberto Ortiz",
+               "Calle falsa 123",
+               "Bogotá",
+               "Bogotá",
+               "110832",
+               "3000000000"));
+         }
       };
    }
 

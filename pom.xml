@@ -102,7 +102,7 @@
 			<artifactId>spring-integration-file</artifactId>
 		</dependency>
 
-    </dependencies>
+	</dependencies>
 
 	<build>
 		<plugins>
