@@ -1,8 +1,26 @@
+taco:
+   order:
+      pageSize: 15 # Spring allows for variations in property names, so it does not matter if we use page-size, or pageSize
+      
+server:
+   port: 8443
+   ssl: # Generate using keytool in the terminal
+      key-store: mykeys.jks
+      key-store-password: ${SSL_KEY_PASSWORD}
+      key-password: ${SSL_KEY_PASSWORD}
+
 spring:
+   security:
+      oauth2:
+         resourceserver:
+            jwt:
+               jwk-set-uri: http://localhost:9000/oauth2/jwks
    rabbitmq:
       username: guest
       password: guest
    data:
+      rest:
+         base-path: /data-api
       mongodb:
          host: 127.0.0.1
          port: 27017
@@ -10,10 +28,13 @@ spring:
    mongodb:
       embedded:
          version: 4.0.28 # 4.0.21 also works fine, 5 and above didn't work
+
 logging:
    level: # indicates the type of log info that is shown
       root: info
       org.springframework.security: debug
+   file.name: logs/TacoCloud.log
+
 management:
    endpoints:
       web:
@@ -26,6 +47,7 @@ management:
    endpoint:
       health:
          show-details: always
+
 info:
    contact:
       email: tacoadmin@tacocloud.com
