@@ -2,19 +2,56 @@ taco:
   order:
     pageSize: 15 # Spring allows for variations in property names, so it does not matter if we use page-size, or pageSize
 server:
-  port: 8443
-  ssl: # Generate using keytool in the terminal
-    key-store: mykeys.jks
-    key-store-password: ${SSL_KEY_PASSWORD}
-    key-password: ${SSL_KEY_PASSWORD}
+   port: 8443
+   ssl: # Generate using keytool in the terminal
+      key-store: mykeys.jks
+      key-store-password: ${SSL_KEY_PASSWORD}
+      key-password: ${SSL_KEY_PASSWORD}
+   shutdown: graceful
 logging:
   file.name: logs/TacoCloud.log
+  level: # indicates the type of log info that is shown
+     root: info
+     org.springframework.security: debug
 spring:
-  data:
-    rest:
-      base-path: /data-api
-  security:
-     oauth2:
-        resourceserver:
-           jwt:
-              jwk-set-uri: http://localhost:9000/oauth2/jwks
+   security:
+      oauth2:
+         resourceserver:
+            jwt:
+               jwk-set-uri: http://localhost:9000/oauth2/jwks
+   rabbitmq:
+      username: guest
+      password: guest
+   data:
+      rest:
+         base-path: /data-api
+      mongodb:
+         host: 127.0.0.1
+         port: 27017
+         database: tacocloud
+   mongodb:
+      embedded:
+         version: 4.0.28 # 4.0.21 also works fine, 5 and above didn't work
+management:
+   endpoints:
+      web:
+         exposure:
+            include: '*'
+         base-path: /albert
+   info:
+      env:
+         enabled: true
+   endpoint:
+      health:
+         probes:
+            enabled: true
+         show-details: always
+info:
+   contact:
+      email: tacoadmin@tacocloud.com
+      phone: 01-8000-451854
+   app:
+      encoding: "@project.build.sourceEncoding@"
+      java:
+         source: "@java.version@"
+         target: "@java.version@"

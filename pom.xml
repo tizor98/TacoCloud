@@ -12,7 +12,7 @@
 
 	<groupId>com.local</groupId>
 	<artifactId>taco-cloud</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>taco-cloud</name>
 	<description>Learning project</description>
 
@@ -114,6 +114,9 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<image>
+						<name>taco-cloud/${project.artifactId}:${project.version}</name>
+					</image>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
